@@ -107,16 +107,22 @@ a:focus-visible {
 }
 
 .hero-image {
-  z-index: -2;
-  background: url("../img/pic.jpg") center center / cover no-repeat;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .hero-shade {
-  z-index: -1;
+  z-index: 1;
   background: rgba(8, 31, 36, 0.53);
 }
 
 .nav-on-image {
+  position: relative;
+  z-index: 2;
   align-self: start;
 }
 
@@ -126,6 +132,8 @@ a:focus-visible {
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   align-self: end;
   padding: 72px 0 76px;
 }
@@ -213,9 +221,9 @@ h3 {
 
 .about-content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 200px;
+  grid-template-columns: minmax(0, 1fr) 150px;
   align-items: start;
-  gap: clamp(26px, 4vw, 58px);
+  gap: clamp(26px, 4vw, 48px);
 }
 
 .about-copy {
@@ -228,7 +236,9 @@ h3 {
 }
 
 .portrait {
+  width: 150px;
   margin: 4px 0 0;
+  justify-self: end;
 }
 
 .portrait img {
@@ -523,7 +533,7 @@ figcaption {
   }
 
   .hero-image {
-    background-position: 58% center;
+    object-position: 58% center;
   }
 
   .hero-content {
@@ -609,8 +619,12 @@ figcaption {
   }
 
   .about-content {
-    grid-template-columns: minmax(0, 1fr) 118px;
+    grid-template-columns: minmax(0, 1fr) 96px;
     gap: 20px;
+  }
+
+  .portrait {
+    width: 96px;
   }
 
   .about-copy {
