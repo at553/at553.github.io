@@ -11,22 +11,20 @@ document.querySelectorAll("[data-email-link]").forEach((link) => {
 
 const revealBrandNav = document.querySelector("[data-reveal-brand]");
 const revealBrandLink = revealBrandNav?.querySelector(".brand");
-const heroName = document.querySelector("[data-hero-name]");
+const heroSection = document.querySelector("[data-hero-section]");
 
-if (revealBrandNav && revealBrandLink && heroName) {
+if (revealBrandNav && revealBrandLink && heroSection) {
   let brandIsVisible = null;
 
   const updateBrandVisibility = () => {
-    const nameHasPassed =
-      heroName.getBoundingClientRect().bottom <=
-      revealBrandNav.getBoundingClientRect().bottom;
+    const heroHasPassed = heroSection.getBoundingClientRect().bottom <= 0;
 
-    if (nameHasPassed === brandIsVisible) return;
+    if (heroHasPassed === brandIsVisible) return;
 
-    brandIsVisible = nameHasPassed;
-    revealBrandLink.classList.toggle("is-visible", nameHasPassed);
-    revealBrandLink.setAttribute("aria-hidden", String(!nameHasPassed));
-    revealBrandLink.tabIndex = nameHasPassed ? 0 : -1;
+    brandIsVisible = heroHasPassed;
+    revealBrandLink.classList.toggle("is-visible", heroHasPassed);
+    revealBrandLink.setAttribute("aria-hidden", String(!heroHasPassed));
+    revealBrandLink.tabIndex = heroHasPassed ? 0 : -1;
   };
 
   updateBrandVisibility();
