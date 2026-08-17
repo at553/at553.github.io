@@ -11,25 +11,27 @@ document.querySelectorAll("[data-email-link]").forEach((link) => {
 
 const revealBrandNav = document.querySelector("[data-reveal-brand]");
 const revealBrandLink = revealBrandNav?.querySelector(".brand");
-const heroSection = document.querySelector("[data-hero-section]");
+const aboutSection = document.querySelector("#about");
 
-if (revealBrandNav && revealBrandLink && heroSection) {
+if (revealBrandNav && revealBrandLink && aboutSection) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let brandIsVisible = null;
   let updateFrame = null;
 
   const updateBrandOpacity = () => {
-    const distancePastHero = Math.max(
-      0,
-      -heroSection.getBoundingClientRect().bottom,
-    );
+    const navHeight = revealBrandNav.getBoundingClientRect().height;
+    const distanceUntilAboutMeetsNav =
+      aboutSection.getBoundingClientRect().top - navHeight;
     const fadeDistance = Math.min(
       Math.max(window.innerHeight * 0.3, 200),
       320,
     );
     const fadeProgress = reducedMotion.matches
-      ? Number(distancePastHero > 0)
-      : Math.min(distancePastHero / fadeDistance, 1);
+      ? Number(distanceUntilAboutMeetsNav <= 0)
+      : Math.min(
+          Math.max(1 - distanceUntilAboutMeetsNav / fadeDistance, 0),
+          1,
+        );
     const brandShouldBeVisible = fadeProgress > 0;
 
     revealBrandLink.style.setProperty("--brand-opacity", String(fadeProgress));
