@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png?v=20260817-2">
   <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png?v=20260817-2">
   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png?v=20260817-2">
-  <link href="css/grayscale.css?v=20260817-4" rel="stylesheet">
+  <link href="css/grayscale.css?v=20260817-7" rel="stylesheet">
   <script src="js/site.js?v=20260817-1" defer></script>
 </head>
 <body>
@@ -30,9 +32,29 @@
       <h1>Writing</h1>
     </section>
 
-    <section class="empty-archive page-width" aria-labelledby="archive-title">
-      <h2 id="archive-title">First entry coming soon.</h2>
-    </section>
+    {% assign essays = site.pages | where: "layout", "essay" | sort: "date" | reverse %}
+    {% if essays.size > 0 %}
+      <section class="essay-archive page-width" aria-labelledby="archive-title">
+        <h2 class="sr-only" id="archive-title">Essay archive</h2>
+        <ol class="essay-list">
+          {% for essay in essays %}
+            <li>
+              <article class="essay-listing">
+                <time datetime="{{ essay.date | date: '%Y-%m-%d' }}">{{ essay.date | date: '%B %-d, %Y' }}</time>
+                <div>
+                  <h2><a href="{{ essay.url | relative_url }}">{{ essay.title | escape }}</a></h2>
+                  {% if essay.description %}<p>{{ essay.description | escape }}</p>{% endif %}
+                </div>
+              </article>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+    {% else %}
+      <section class="empty-archive page-width" aria-labelledby="archive-title">
+        <h2 id="archive-title">First entry coming soon.</h2>
+      </section>
+    {% endif %}
   </main>
 
   <footer class="site-footer" id="contact">

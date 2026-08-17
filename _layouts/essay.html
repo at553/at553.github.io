@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | escape }}">
+  <meta name="author" content="Avi Thangali">
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <title>{{ page.title | escape }} | Avi Thangali</title>
+  <link rel="icon" href="{{ '/favicon.ico?v=20260817-2' | relative_url }}" sizes="32x32">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/img/favicon-32x32.png?v=20260817-2' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/img/favicon-16x16.png?v=20260817-2' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/img/apple-touch-icon.png?v=20260817-2' | relative_url }}">
+  <link href="{{ '/css/grayscale.css?v=20260817-7' | relative_url }}" rel="stylesheet">
+  <script src="{{ '/js/site.js?v=20260817-1' | relative_url }}" defer></script>
+</head>
+<body>
+  <header class="site-header site-header-light">
+    <nav class="nav page-width" aria-label="Primary navigation">
+      <a class="brand" href="{{ '/index.html' | relative_url }}">Avi Thangali</a>
+      <div class="nav-links">
+        <a href="{{ '/publications.html' | relative_url }}">Research</a>
+        <a aria-current="page" href="{{ '/writing.html' | relative_url }}">Writing</a>
+        <a href="{{ '/contact.html' | relative_url }}">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <header class="essay-intro page-width">
+      <p class="essay-date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>
+      <h1>{{ page.title | escape }}</h1>
+      {% if page.description %}<p class="essay-description">{{ page.description | escape }}</p>{% endif %}
+    </header>
+
+    <article class="essay-body page-width">
+      {{ content }}
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="page-width footer-grid">
+      <p class="footer-note">Views are my own.</p>
+      <div class="footer-links" aria-label="Contact links">
+        <a href="https://www.linkedin.com/in/athangali/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/at553" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="email-link" href="#email" data-email-link><span aria-hidden="true">avinashthangali [at] gmail [dot] com</span><span class="sr-only">Email Avi Thangali</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
