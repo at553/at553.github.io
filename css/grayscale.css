@@ -488,6 +488,13 @@ figcaption {
     width: min(100% - 32px, 1120px);
   }
 
+  .nav-on-image {
+    right: 0;
+    width: auto;
+    max-width: none;
+    margin: 0;
+  }
+
   .hero {
     min-height: 58svh;
   }
@@ -508,6 +515,14 @@ figcaption {
 
   .section-label h2 {
     max-width: 430px;
+  }
+
+  .portrait {
+    margin: 0 auto;
+  }
+
+  .portrait figcaption {
+    text-align: center;
   }
 
   .research-section {
