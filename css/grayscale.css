@@ -201,8 +201,9 @@ h3 {
 
 .about-section {
   display: grid;
-  grid-template-columns: minmax(210px, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(64px, 9vw, 124px);
+  width: min(960px, calc(100% - 48px));
+  grid-template-columns: minmax(170px, 0.28fr) minmax(0, 1fr);
+  gap: clamp(48px, 5vw, 64px);
   padding: 108px 0;
 }
 
