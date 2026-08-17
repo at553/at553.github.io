@@ -14,20 +14,45 @@ const revealBrandLink = revealBrandNav?.querySelector(".brand");
 const heroSection = document.querySelector("[data-hero-section]");
 
 if (revealBrandNav && revealBrandLink && heroSection) {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let brandIsVisible = null;
+  let updateFrame = null;
 
-  const updateBrandVisibility = () => {
-    const heroHasPassed = heroSection.getBoundingClientRect().bottom <= 0;
+  const updateBrandOpacity = () => {
+    const distancePastHero = Math.max(
+      0,
+      -heroSection.getBoundingClientRect().bottom,
+    );
+    const fadeDistance = Math.min(
+      Math.max(window.innerHeight * 0.3, 200),
+      320,
+    );
+    const fadeProgress = reducedMotion.matches
+      ? Number(distancePastHero > 0)
+      : Math.min(distancePastHero / fadeDistance, 1);
+    const brandShouldBeVisible = fadeProgress > 0;
 
-    if (heroHasPassed === brandIsVisible) return;
+    revealBrandLink.style.setProperty("--brand-opacity", String(fadeProgress));
 
-    brandIsVisible = heroHasPassed;
-    revealBrandLink.classList.toggle("is-visible", heroHasPassed);
-    revealBrandLink.setAttribute("aria-hidden", String(!heroHasPassed));
-    revealBrandLink.tabIndex = heroHasPassed ? 0 : -1;
+    if (brandShouldBeVisible === brandIsVisible) return;
+
+    brandIsVisible = brandShouldBeVisible;
+    revealBrandLink.classList.toggle("is-visible", brandShouldBeVisible);
+    revealBrandLink.setAttribute("aria-hidden", String(!brandShouldBeVisible));
+    revealBrandLink.tabIndex = brandShouldBeVisible ? 0 : -1;
   };
 
-  updateBrandVisibility();
-  window.addEventListener("scroll", updateBrandVisibility, { passive: true });
-  window.addEventListener("resize", updateBrandVisibility);
+  const requestBrandUpdate = () => {
+    if (updateFrame !== null) return;
+
+    updateFrame = window.requestAnimationFrame(() => {
+      updateFrame = null;
+      updateBrandOpacity();
+    });
+  };
+
+  updateBrandOpacity();
+  window.addEventListener("scroll", requestBrandUpdate, { passive: true });
+  window.addEventListener("resize", requestBrandUpdate);
+  reducedMotion.addEventListener("change", requestBrandUpdate);
 }
