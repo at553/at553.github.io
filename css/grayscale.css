@@ -94,7 +94,7 @@ a:focus-visible {
 .hero {
   position: relative;
   display: grid;
-  min-height: clamp(520px, 70svh, 680px);
+  min-height: clamp(440px, 58svh, 560px);
   overflow: hidden;
   color: #ffffff;
   isolation: isolate;
@@ -478,7 +478,7 @@ figcaption {
   }
 
   .hero {
-    min-height: 68svh;
+    min-height: 58svh;
   }
 
   .hero-image {
@@ -562,7 +562,7 @@ figcaption {
   }
 
   .hero {
-    min-height: 66svh;
+    min-height: 56svh;
   }
 
   .hero-line {
