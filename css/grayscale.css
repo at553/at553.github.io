@@ -535,6 +535,13 @@ figcaption {
   border: 0;
 }
 
+@media (min-width: 801px) {
+  .about-section .section-label h2 {
+    width: 170px;
+    text-align: center;
+  }
+}
+
 @media (max-width: 800px) {
   .page-width {
     width: min(100% - 32px, 1120px);
