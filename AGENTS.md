@@ -9,3 +9,8 @@
 
 - Apply stylistic changes to both desktop and mobile by default so the experiences mirror each other wherever practical.
 - If a requested change would create conflicting requirements, behavior, or styling between desktop and mobile, stop and ask the user for direction before implementing it.
+
+## Essay publishing
+
+- Use the repository-local `$publish-essay` skill for essay drafting, publishing, updates, Writing archive changes, and post-specific artifacts.
+- Treat `writing-inbox/essay.md` as the single Markdown input and `writing-inbox/assets/` as that draft's artifact directory.

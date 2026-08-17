@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Essay"
+  short_description: "Publish Markdown essays with bundled artifacts"
+  default_prompt: "Use $publish-essay to publish the Markdown draft from the writing inbox."

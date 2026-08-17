@@ -1,0 +1,19 @@
+title: Avi Thangali
+description: AI research, notes, and working thoughts.
+url: https://avi.thangali.me
+baseurl: ""
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - .agents
+  - .idea
+  - node_modules
+  - writing-inbox
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - gulpfile.js
+  - README.md
+  - LICENSE
