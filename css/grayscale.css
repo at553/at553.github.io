@@ -201,20 +201,18 @@ h3 {
 
 .about-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(36px, 8vw, 112px);
+  grid-template-columns: minmax(210px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(64px, 9vw, 124px);
   padding: 108px 0;
 }
 
 .section-label h2 {
   max-width: 300px;
+  margin-bottom: 28px;
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 150px;
-  align-items: start;
-  gap: clamp(26px, 4vw, 48px);
+  padding-top: 8px;
 }
 
 .about-copy {
@@ -227,9 +225,8 @@ h3 {
 }
 
 .portrait {
-  width: 150px;
-  margin: 4px 0 0;
-  justify-self: end;
+  width: 170px;
+  margin: 0;
 }
 
 .portrait img {
@@ -572,12 +569,11 @@ figcaption {
   }
 
   .about-content {
-    grid-template-columns: minmax(0, 1fr) 96px;
-    gap: 20px;
+    padding-top: 0;
   }
 
   .portrait {
-    width: 96px;
+    width: 120px;
   }
 
   .about-copy {
