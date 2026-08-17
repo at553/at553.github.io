@@ -4,3 +4,8 @@
 - After the pull request is merged, synchronize the local default branch and remove the merged local and remote feature branches when safe.
 - Do not publish repository changes through this workflow when the user explicitly asks to keep the work local, leave it uncommitted, or leave the pull request open for review.
 - If authentication, permissions, required checks, merge conflicts, or branch protection prevent completion, preserve the work and clearly report the blocker.
+
+## Responsive design
+
+- Apply stylistic changes to both desktop and mobile by default so the experiences mirror each other wherever practical.
+- If a requested change would create conflicting requirements, behavior, or styling between desktop and mobile, stop and ask the user for direction before implementing it.
