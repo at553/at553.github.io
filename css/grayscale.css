@@ -121,9 +121,16 @@ a:focus-visible {
 }
 
 .nav-on-image {
-  position: relative;
-  z-index: 2;
-  align-self: start;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  padding-right: max(24px, calc((100vw - 1120px) / 2));
+  padding-left: max(24px, calc((100vw - 1120px) / 2));
+  background: rgba(15, 43, 49, 0.96);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .nav-on-image a:hover,
@@ -187,28 +194,12 @@ h3 {
 
 .hero-line {
   max-width: 580px;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   font-size: clamp(1.12rem, 2vw, 1.42rem);
   line-height: 1.4;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.hero-actions a {
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-}
-
-.about-section,
-.writing-section {
+.about-section {
   display: grid;
   grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
   gap: clamp(36px, 8vw, 112px);
@@ -288,27 +279,8 @@ figcaption {
   color: var(--river);
 }
 
-.research-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-}
-
-.research-item {
-  min-height: 230px;
-  padding: 24px 28px 22px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.research-item + .research-item {
-  padding-left: 28px;
-  border-left: 1px solid var(--line);
-}
-
-.item-index,
 .publication-year,
-.archive-number,
-.featured-publication > p:first-child {
+.archive-number {
   color: var(--river);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.76rem;
@@ -317,17 +289,10 @@ figcaption {
   text-transform: uppercase;
 }
 
-.research-item p:last-child {
-  max-width: 280px;
-  margin-bottom: 0;
-  color: var(--muted);
-}
-
 .featured-publications {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
-  margin-top: 52px;
 }
 
 .featured-publication {
@@ -337,7 +302,7 @@ figcaption {
 
 .featured-publication h3 {
   max-width: 480px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-size: 1.35rem;
 }
 
@@ -357,20 +322,13 @@ figcaption {
 }
 
 .writing-section {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 82px 0;
 }
 
-.writing-copy {
-  max-width: 580px;
-}
-
-.writing-copy > p:not(.eyebrow) {
-  max-width: 430px;
-  color: var(--muted);
-  font-size: 1.08rem;
-}
-
-.coming-soon,
 .empty-archive {
   display: grid;
   align-items: start;
@@ -378,16 +336,8 @@ figcaption {
   border-bottom: 1px solid var(--ink);
 }
 
-.coming-soon {
-  grid-template-columns: 64px minmax(0, 1fr);
-  gap: 22px;
-  padding: 24px 0;
-}
-
-.coming-soon p:last-child {
+.writing-section h2 {
   margin: 0;
-  font-size: 1.4rem;
-  line-height: 1.2;
 }
 
 .site-footer {
@@ -426,6 +376,9 @@ figcaption {
 }
 
 .site-header-light {
+  position: sticky;
+  z-index: 20;
+  top: 0;
   border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
@@ -494,8 +447,6 @@ figcaption {
 }
 
 .empty-archive {
-  grid-template-columns: 98px minmax(0, 1fr);
-  gap: 30px;
   min-height: 260px;
   padding: 30px 0;
 }
@@ -540,8 +491,7 @@ figcaption {
     padding: 48px 0 54px;
   }
 
-  .about-section,
-  .writing-section {
+  .about-section {
     grid-template-columns: 1fr;
     gap: 34px;
     padding: 76px 0;
@@ -561,21 +511,12 @@ figcaption {
     margin-bottom: 38px;
   }
 
-  .research-grid,
   .featured-publications {
     grid-template-columns: 1fr;
   }
 
-  .research-item,
-  .research-item + .research-item {
-    min-height: auto;
-    padding: 22px 0;
-    border-left: 0;
-  }
-
   .featured-publications {
     gap: 34px;
-    margin-top: 38px;
   }
 
   .page-intro {
@@ -610,6 +551,18 @@ figcaption {
     gap: 16px;
   }
 
+  .nav-on-image {
+    min-height: 64px;
+    padding: 0 16px;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .nav-on-image .nav-links {
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
   .hero {
     min-height: 72svh;
   }
@@ -629,6 +582,13 @@ figcaption {
 
   .about-copy {
     font-size: 1.03rem;
+  }
+
+  .writing-section {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    padding: 62px 0;
   }
 
   .footer-grid {
